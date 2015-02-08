@@ -1,0 +1,27 @@
+{
+  "name": "clientize-rak",
+  "version": "0.0.1",
+  "description": "Utilities to make working with ES6 promises easier",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodeunit test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hangarr/clientize-rak.git"
+  },
+  "keywords": [
+    "promises",
+    "ES6",
+    "q"
+  ],
+  "author": "Rick Hangartner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hangarr/clientize-rak/issues"
+  },
+  "homepage": "https://github.com/hangarr/clientize-rak",
+  "dependencies": {
+    "es6-promise": "^2.0.1"
+  }
+}
