@@ -22,7 +22,9 @@
   },
   "homepage": "https://github.com/hangarr/clientize-rak",
   "dependencies": {
-    "es6-promise": "^2.0.1"
+    "bluebird": "^2.9.9",
+    "es6-promise": "^2.0.1",
+    "q": "^1.1.2"
   },
   "devDependencies": {
     "kew": "^0.5.0-alpha.1",

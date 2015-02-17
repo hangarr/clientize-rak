@@ -4,14 +4,14 @@ Utilities to make working with ES6 promises easier
 ## Promise overview.
 [ECMAScript 6 promises](http://people.mozilla.org/~jorendorff/es6-draft.html#sec-promise-objects) are a subset of the [Promises/A+](https://promisesaplus.com/) specification. The [Promise.js proposal](https://www.promisejs.org) provides some additional info.
 
-`Clientize-Rak` uses the [es6-promises](https://www.npmjs.com/package/es6-promise) package in ECMAScript5.  When ECMAScript 6 becomes available, just delete
+`Clientize-Rak` can use the [bluebird](),  [es6-promises](https://www.npmjs.com/package/es6-promise), or any other ECMAScript6 style package in ECMAScript5. To install and use
 ```
 var Promise = require('es6-promise').Promise;
+var Promise = require('bluebird');
 ```
-
-This package should also work in AngularJS browser clients, such as a `browserify`-ed client by subsituting
+The package has a convenience method to convert the AngularJS $q promise to an ES6 promise
 ```
-var Promise = $q;
+var Promise = require('clientize-rak').angular($q);
 ```
 
 An ES6 Promise is created with the `Promise(executor)` constructor that accepts an executor `function()` as an argument:
@@ -50,13 +50,29 @@ The object returned by the `then()` method depends on whether the "resolved" or 
 </ol>
 An object or function is "thenable" if it includes a `.then()` method
 
+## Use
+`Clientize-Rak` can use the [bluebird](),  [es6-promises](https://www.npmjs.com/package/es6-promise), or any other ECMAScript6 style package in ECMAScript5. To install and use
+```
+var rak = require('clientize-rak')(require('es6-promise').Promise);
+var rak = require('clientize-rak')(require('bluebird'));
+```
+When ECMAScript 6 becomes available, just use
+```
+var rak = require('clientize-rak')();
+```
+
+Although not yet tested, the package should also work in AngularJS browser clients, by substituting
+```
+var rak = require('clientize-rak')(require('clientize-rak').angular($q));
+```
+
 ## Core functions
 Much more functionality will be added. For now the core functionality includes two functions.
 ### rak.promiseQ(q)
 Wraps an ES6 promise around a Q/kew-style promise:
 ```
 var Q = require('kew');
-var rak = require('clientize-rak');
+var rak = require('clientize-rak')(require('bluebird'));
 
 var defer = Q.defer()
 // Rest of the "defer" coding
@@ -67,7 +83,7 @@ var promise = rak.promiseQ(defer);
 ### rak.deferred()
 Creates a Q-style deferred from an ES6 promise
 ```
-var rak = require('clientize-rak');
+var rak = require('clientize-rak')(require('bluebird'));
 
 var defer = rak.deferred();
 ```
