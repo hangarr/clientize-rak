@@ -133,15 +133,11 @@
 							throw new TypeError('Argument array item is not a Promise');
 						promises.push(promise);
 						return promise;
-					}, function(fail) {
-						return Promise.reject(null);
 					});
 				})(i);
 			};
 
 			return promiseZ.then(function() {
-				return Promise.all(promises);
-			}, function() {
 				return Promise.all(promises);
 			});
 		};
