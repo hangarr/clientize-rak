@@ -3,8 +3,7 @@
  */
 ;(function() {
 	
-	var Q = require('q')
-	  , util = require('util');
+	var util = require('util');
 
 	// Tests using ES6-style Promise
 	if(typeof Promise !== 'function') {
